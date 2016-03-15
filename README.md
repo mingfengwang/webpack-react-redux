@@ -6,7 +6,7 @@ React Redux-Router Redux webpack es6&es7 兼容IE8
 		test: /\.js$/,  
 		loaders: ['es3ify-loader', 'babel-loader'],
 		exclude: /node_modules/,
-但这里可能会遇到一个坑，redux-router (尤其是诸如redux-simple-router之类的库)，因为你的webpack正常情况下会 `exclude: /node_modules/`，所以这些库并不会被处理，请自行到你的库中，比如redux-simple-router/lib/index.js，第17行`{ default: obj }` to `{ "default": obj }`,第104行 `(0, _deepEqual2.default)` to `(0, _deepEqual2["default"])`  
+但这里可能会遇到一个坑，redux-router (尤其是诸如redux-simple-router之类的库)，因为你的webpack正常情况下会 `exclude: /node_modules/`，所以这些库并不会被处理，请自行到你的库中，比如redux-simple-router/lib/index.js，第17行`{ default: obj }` to `{ "default": obj }`,第104行 `(0, _deepEqual2.default)` to `(0, _deepEqual2["default"])`，已提交了一个[现成的库](https://www.npmjs.com/package/redux-simple-router-ie8)，如有需要可以使用  
 
 	题外话：另一个替代方案[transform-es3-member-expression-literals](http://babeljs.io/docs/plugins/transform-es3-member-expression-literals/)建议别使用，原因hax https://phabricator.babeljs.io/T2817 已有指出
 3. 	不要在你的代码中使用 export default之类的代码，但是如果你在你的reducers/index.js之类的库中有类似于 `export default rootReducer`这是redux `combineReducers`的产物,不要改成 `module.exports = rootReducer;`可能导致出错
