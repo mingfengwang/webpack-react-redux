@@ -1,4 +1,3 @@
-# webpack-react-redux-ie8
 React Redux-Router Redux webpack es6&es7 兼容IE8
 
 1. 如果你在打包时打包了jquery，请检查版本，避免2.0.0+，至少在IE8下document.implementation.createHTMLDocument 是不存在的，而新版的jquery放弃了在support.createHTMLDocument方法中的IE低版本验错代码。
@@ -9,7 +8,7 @@ React Redux-Router Redux webpack es6&es7 兼容IE8
 		exclude: /node_modules/,
 但这里可能会遇到一个坑，redux-router (尤其是诸如redux-simple-router之类的库)，因为你的webpack正常情况下会 `exclude: /node_modules/`，所以这些库并不会被处理，请自行到你的库中，比如redux-simple-router/lib/index.js，第17行`{ default: obj }` to `{ "default": obj }`,第104行 `(0, _deepEqual2.default)` to `(0, _deepEqual2["default"])`  
 
-	题外话：另一个替代方案[transform-es3-member-expression-literals](http://babeljs.io/docs/plugins/transform-es3-member-expression-literals/)建议别使用，原因(hax)[https://phabricator.babeljs.io/T2817]已有指出
+	题外话：另一个替代方案[transform-es3-member-expression-literals](http://babeljs.io/docs/plugins/transform-es3-member-expression-literals/)建议别使用，原因hax https://phabricator.babeljs.io/T2817 已有指出
 3. 	不要在你的代码中使用 export default之类的代码，但是如果你在你的reducers/index.js之类的库中有类似于 `export default rootReducer`这是redux `combineReducers`的产物,不要改成 `module.exports = rootReducer;`可能导致出错
 4. 	检查你的react以及redux等库的版本，尤其是react，不要超过0.15.x，原因你懂的
 			
