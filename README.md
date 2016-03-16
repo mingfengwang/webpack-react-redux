@@ -52,4 +52,11 @@ React Redux-Router Redux webpack es6&es7 兼容IE8
         		//screw_ie8: true
       		},
       		output: {comments: false}
-    	}),  
+    	})
+  
+      	
+8. 注意一下babel以及其plugin的版本
+
+		babel-core 不能高于 "6.5.2",
+		babel-polyfill 不能高于 "6.5.0"   
+		注意 如果使用ant design 阿里的react控件，避免使用最高版本，有些并不支持ie8	
