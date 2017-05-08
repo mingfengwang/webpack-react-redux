@@ -13,9 +13,9 @@ React Redux-Router Redux webpack es6&es7 兼容IE8
 4. 	检查你的react以及redux等库的版本，尤其是react，不要超过0.15.x，原因你懂的
 			
 			"react": "^0.14.2",
-	    	"react-redux": "^4.0.0",
-    		"react-router": "^2.0.0-rc4",
-		    "redux": "^3.1.4"
+	    		"react-redux": "^4.0.0",
+    			"react-router": "^2.0.0-rc4",
+		    	"redux": "^3.1.4"
 5. 引入 [transform-es5-property-mutators](http://babeljs.io/docs/plugins/transform-es5-property-mutators/) 和 [transform-jscript](http://babeljs.io/docs/plugins/transform-jscript/), .babelrc配置如下
 		
 		{
@@ -29,7 +29,8 @@ React Redux-Router Redux webpack es6&es7 兼容IE8
     			}
   			}
 		}
-里面的`transform-decorators-legacy` 是es7 [decorators模式](http://technologyadvice.github.io/es7-decorators-babel6/)的编译，如果没用到可以不加。
+里面的`transform-decorators-legacy` 是es7 [decorators模式](http://technologyadvice.github.io/es7-decorators-babel6/)的编译，如果没用到可以不加。  
+
 6. 然后就开始加各种polyfill吧，首先加入`babel-polyfill`，建议放在webpack打包时配置，比如
 		
 		entry: [
@@ -43,7 +44,8 @@ React Redux-Router Redux webpack es6&es7 兼容IE8
 		require('console-polyfill');
 		
   参考[react-ie8](https://github.com/xcatliu/react-ie8)，
-  最后引入`html5shiv`，如果你没有使用bower，此处建议你自己把其src/html5shiv.js 外包一层，使其只在IE8时运行，并在你的html head里引入这个js
+  最后引入`html5shiv`，如果你没有使用bower，此处建议你自己把其src/html5shiv.js 外包一层，使其只在IE8时运行，并在你的html head里引入这个js  
+  
 7. 如果你以上的都干了，并且在你的项目中用了webpack的`webpack.optimize.UglifyJsPlugin`不要使用 `screw_ie8: true`会导致错误。
 		
 		new webpack.optimize.UglifyJsPlugin({
