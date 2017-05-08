@@ -12,10 +12,10 @@ React Redux-Router Redux webpack es6&es7 兼容IE8
 3. 	不要在你的代码中使用 export default之类的代码，但是如果你在你的reducers/index.js之类的库中有类似于 `export default rootReducer`这是redux `combineReducers`的产物,不要改成 `module.exports = rootReducer;`可能导致出错
 4. 	检查你的react以及redux等库的版本，尤其是react，不要超过0.15.x，原因你懂的
 			
-			"react": "^0.14.2",
-	    		"react-redux": "^4.0.0",
-    			"react-router": "^2.0.0-rc4",
-		    	"redux": "^3.1.4"
+		"react": "^0.14.2",
+		"react-redux": "^4.0.0",
+		"react-router": "^2.0.0-rc4",
+		"redux": "^3.1.4"
 5. 引入 [transform-es5-property-mutators](http://babeljs.io/docs/plugins/transform-es5-property-mutators/) 和 [transform-jscript](http://babeljs.io/docs/plugins/transform-jscript/), .babelrc配置如下
 		
 		{
